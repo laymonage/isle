@@ -29,6 +29,7 @@
     "date-fns": "^4.1.0",
     "entities": "^5.0.0",
     "giscus": "^1.5.0",
+    "og-images-generator": "^0.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "reading-time": "^1.5.0",

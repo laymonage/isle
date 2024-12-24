@@ -1,21 +1,24 @@
-import mdx from '@astrojs/mdx';
 // @ts-check
 import { defineConfig } from 'astro/config';
+
+import mdx from '@astrojs/mdx';
 
 import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
-import icon from 'astro-icon';
-
 import tailwind from '@astrojs/tailwind';
+
+import vercel from '@astrojs/vercel';
+
+import icon from 'astro-icon';
 
 import pagefind from 'astro-pagefind';
 
-import { ogImagesGenerator } from './src/lib/astro';
-import { copyButton } from './src/lib/shiki';
+import { astroOgImagesGenerator } from 'og-images-generator/astro';
 
-import vercel from '@astrojs/vercel';
+import { paths } from './og-images.config';
+import { copyButton } from './src/lib/shiki';
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,7 +51,7 @@ export default defineConfig({
     icon(),
     tailwind(),
     pagefind(),
-    ogImagesGenerator(),
+    astroOgImagesGenerator(paths),
   ],
   markdown: {
     shikiConfig: {
