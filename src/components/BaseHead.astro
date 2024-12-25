@@ -14,7 +14,8 @@ const pathname = Astro.url.pathname;
 
 const canonicalURL = new URL(pathname, Astro.site);
 
-const imagePathname = pathname === '/' ? '/index' : pathname;
+const imagePathname =
+  (pathname.endsWith('/') ? pathname.slice(0, -1) : pathname) || '/index';
 
 const {
   title: _title,
