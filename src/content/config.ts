@@ -17,7 +17,6 @@ const baseSchema = z.object({
 const postsSchema = baseSchema.extend({
   date: z.coerce.date(),
   draft: z.boolean().optional(),
-  toc: z.boolean().optional(),
   tags: z.array(z.string()).optional(),
   image: z.string().optional(),
 });

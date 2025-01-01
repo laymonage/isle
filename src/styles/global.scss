@@ -267,6 +267,18 @@ a,
   scroll-margin-top: 6rem;
 }
 
+[id="table-of-contents"] {
+  @apply text-xl;
+
+  .anchor-link {
+    @apply hidden;
+  }
+}
+
+.toc {
+  @apply text-lg border border-opacity-20 border-gray-400 rounded-lg bg-slate-400 bg-opacity-10;
+}
+
 .bg {
   background-image: url('/bg.svg');
   z-index: -1;

@@ -18,6 +18,8 @@ import icon from 'astro-icon';
 
 import pagefind from 'astro-pagefind';
 
+import remarkToc from './src/lib/toc';
+
 import rehypeSlug from 'rehype-slug';
 
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -70,6 +72,7 @@ export default defineConfig({
       defaultColor: false,
       transformers: [copyButton()],
     },
+    remarkPlugins: [[remarkToc, { maxDepth: 3, className: 'toc' }]],
     rehypePlugins: [
       rehypeSlug,
       [
