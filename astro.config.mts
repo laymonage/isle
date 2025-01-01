@@ -18,6 +18,10 @@ import icon from 'astro-icon';
 
 import pagefind from 'astro-pagefind';
 
+import rehypeSlug from 'rehype-slug';
+
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
 import { astroOgImagesGenerator } from 'og-images-generator/astro';
 
 import { paths } from './og-images.config';
@@ -66,6 +70,25 @@ export default defineConfig({
       defaultColor: false,
       transformers: [copyButton()],
     },
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          content: {
+            type: 'text',
+            value: '#',
+          },
+          headingProperties: {
+            className: ['anchor'],
+          },
+          properties: {
+            className: ['anchor-link'],
+          },
+        },
+      ],
+    ],
   },
   vite: {
     resolve: {
