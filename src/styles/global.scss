@@ -260,7 +260,7 @@ a,
 }
 
 .anchor-link {
-  @apply -ml-6 w-6 inline-block no-underline;
+  @apply w-6 sm:-ml-6 inline-block no-underline;
 }
 
 [id] {
