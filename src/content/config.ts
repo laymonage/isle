@@ -60,21 +60,9 @@ const logs = defineCollection({
   schema: baseSchema,
 });
 
-// Replace with Object.groupBy when Node 22 is fully supported
-export const groupBy = <T>(
-  arr: T[],
-  key: (item: T) => string,
-): { [key: string]: T[] } =>
-  arr.reduce((acc, current) => {
-    const groupingKey = key(current);
-    acc[groupingKey] = acc[groupingKey] || [];
-    acc[groupingKey].push(current);
-    return acc;
-  }, Object.create(null));
-
 export const getGroupedLogs = async () =>
   Object.entries(
-    groupBy(
+    Object.groupBy(
       (await getCollection('logs'))
         .map((log) => ({
           ...log,
