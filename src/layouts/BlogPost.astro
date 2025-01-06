@@ -4,6 +4,7 @@ import CopyButton from '../components/CopyButton.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { prose } from '../lib/classes';
 import BaseLayout from './BaseLayout.astro';
+import { md } from '../content/config';
 
 type PostData = Omit<CollectionEntry<'posts'>['data'], 'date'>;
 
@@ -21,6 +22,7 @@ const {
   tags = [],
   comments,
 } = Astro.props;
+const renderedTitle = await md(title);
 ---
 
 <BaseLayout
@@ -34,9 +36,8 @@ const {
     <div class="mt-4 flex-row">
       <h1
         class="mb-4 text-5xl font-semibold tracking-tight text-black dark:text-white"
-      >
-        {title}
-      </h1>
+        set:html={renderedTitle}
+      />
       {
         (date || readingTime) && (
           <div class="mb-4 flex justify-between">
