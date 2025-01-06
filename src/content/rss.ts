@@ -15,13 +15,20 @@ export const thoughts = {
   items: await getRssItems('thoughts'),
 };
 
+export const tils = {
+  title: "laymonage's TILs",
+  description:
+    'A collection of Today I Learned posts from laymonage (Sage Abdullah).',
+  items: await getRssItems('tils'),
+};
+
 export const all = {
   title: 'laymonage',
   description: 'All content from laymonage (Sage Abdullah).',
-  items: sortFeedItems([...posts.items, ...thoughts.items]),
+  items: sortFeedItems([...posts.items, ...thoughts.items, ...tils.items]),
 };
 
-const feeds = { posts, thoughts, '': all };
+const feeds = { posts, thoughts, tils, '': all };
 
 export const rss = (feed: keyof typeof feeds, context: APIContext) =>
   AstroRSS({

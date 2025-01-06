@@ -36,12 +36,26 @@ const thoughts = defineCollection({
   schema: postsSchema,
 });
 
-type ContentTypeWithDate = 'gsoc' | 'posts' | 'thoughts';
+const tils = defineCollection({
+  loader: glob({ pattern: '*/[^_]*.md', base: './til' }),
+  schema: postsSchema,
+});
 
-export const getSortedCollection = async <C extends ContentTypeWithDate>(collection: C) =>
+type ContentTypeWithDate = 'gsoc' | 'posts' | 'thoughts' | 'tils';
+
+export const getSortedCollection = async <C extends ContentTypeWithDate>(
+  collection: C,
+) =>
   (await getCollection<C>(collection)).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
+
+export const getGroupedTILs = async () => {
+  const collection = await getSortedCollection('tils');
+  return Object.entries(
+    Object.groupBy(collection, (entry) => entry.id.split('/')[0]),
+  );
+};
 
 // Logs
 
@@ -91,7 +105,7 @@ export const sortFeedItems = (items: z.infer<typeof rssSchema>[]) =>
     (a, b) => (b.pubDate?.valueOf() || 0) - (a.pubDate?.valueOf() || 0),
   );
 
-type FeedContentType = 'posts' | 'thoughts';
+type FeedContentType = 'posts' | 'thoughts' | 'tils';
 
 export const getRssItems = async (collection: FeedContentType) =>
   sortFeedItems(
@@ -159,6 +173,7 @@ export const collections = {
   logs,
   posts,
   thoughts,
+  tils,
   about,
   projects,
   palates,

@@ -1,0 +1,54 @@
+---
+import Card from '../../components/Card.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Link from '../../components/Link.astro';
+import ListItem from '../../components/ListItem.astro';
+import { md } from '../../content/config';
+import { getGroupedTILs } from '../../content/config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { prose } from '../../lib/classes';
+
+const tils = await getGroupedTILs();
+---
+
+<BaseLayout description="All TILs by laymonage." title="TILs">
+  <Card class:list={prose}>
+    <h1 id="tils" slot="header">
+      <Link href="#tils">TILs</Link>
+    </h1>
+    <p>A collection of small things I learned.</p>
+  </Card>
+
+  {
+    tils.length > 0 ? (
+      tils.map(([topic, tils], index) => (
+        <details open={index === 0}>
+          <summary class="mt-6 text-3xl font-semibold text-gray-800 dark:text-gray-100">
+            <h2 class="ml-2">{topic} ({tils!.length})</h2>
+          </summary>
+          <ol class="ml-6 list-disc">
+            {tils!.map((til) => (
+              <ListItem>
+                <Link
+                  class="mt-6 block text-gray-700 dark:text-gray-300"
+                  href={`/til/${til.id}`}
+                >
+                  <h2 class="text-lg">
+                    <FormattedDate
+                      class="font-semibold tabular-nums whitespace-nowrap"
+                      date={til.data.date}
+                      format={{}}
+                      locale="sv"
+                    />
+                  </h2>
+                  <h3 class="text-2xl font-semibold" set:html={md(til.data.title)} />
+                </Link>
+              </ListItem>
+            ))}
+          </ol>
+        </details>
+      ))) : (
+      <p>No TILs so far.</p>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import readingTime from 'reading-time';
+import { getContentStaticPaths } from '../../content/config';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  return await getContentStaticPaths('tils');
+}
+type Props = CollectionEntry<'tils'>;
+
+const til = Astro.props;
+---
+
+<BlogPost
+  {...til.data}
+  readingTime={readingTime(til.rendered!.html).text}
+  tags={[]}
+>
+  <Fragment set:html={til.rendered!.html} />
+</BlogPost>
