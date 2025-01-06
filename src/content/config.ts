@@ -38,8 +38,8 @@ const thoughts = defineCollection({
 
 type ContentTypeWithDate = 'gsoc' | 'posts' | 'thoughts';
 
-export const getSortedCollection = async (collection: ContentTypeWithDate) =>
-  (await getCollection(collection)).sort(
+export const getSortedCollection = async <C extends ContentTypeWithDate>(collection: C) =>
+  (await getCollection<C>(collection)).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
 
