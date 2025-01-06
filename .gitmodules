@@ -2,3 +2,8 @@
 	path = content
 	url = https://github.com/laymonage/content.git
 	branch = main
+
+[submodule "til"]
+	path = til
+	url = https://github.com/laymonage/til.git
+	branch = main
