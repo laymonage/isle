@@ -34,7 +34,7 @@ const logs = await getGroupedLogs();
       logs.map(([year, logs], index) => (
         <details open={index === 0}>
           <summary class="mt-6 text-3xl font-semibold text-gray-800 dark:text-gray-100">
-            <h2 class="ml-2 align-text-top">{year}</h2>
+            <h2 class="ml-2">{year}</h2>
           </summary>
           <ol class="ml-6 list-disc">
             {logs!.map((log) => (
