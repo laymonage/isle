@@ -22,7 +22,7 @@ const tils = await getGroupedTILs();
   {
     tils.length > 0 ? (
       tils.map(([topic, tils], index) => (
-        <details open={index === 0}>
+        <details>
           <summary class="mt-6 text-3xl font-semibold text-gray-800 dark:text-gray-100">
             <h2 class="ml-2">{topic} ({tils!.length})</h2>
           </summary>
