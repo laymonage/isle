@@ -40,18 +40,18 @@ const tIdx = terms.indexOf(term);
   </p>
   <span class="sr-only">Choose a time frame:</span>
   <ol
-    class="mb-4 flex w-fit items-center gap-x-1.5 rounded bg-blue-200 bg-opacity-25"
+    class="mb-4 flex w-fit items-center gap-x-1.5 rounded-sm bg-blue-200/25"
   >
     {
       terms.map((t, i) => {
         return (
           <li
             class:list={[
-              'relative rounded border-2 outline-offset-0',
+              'relative rounded-sm border-2 outline-offset-0',
               {
                 'before:pointer-events-none before:absolute before:inset-0 before:-left-px before:my-1 before:border-l before:border-gray-500':
                   t !== term && i !== 0 && i !== tIdx + 1,
-                'border-gray-500 border-opacity-25 bg-blue-800 bg-opacity-100 font-semibold dark:bg-gray-800':
+                'border-gray-500/25 bg-blue-800 font-semibold dark:bg-gray-800':
                   t === term,
                 'border-transparent': t !== term,
               },
