@@ -457,7 +457,7 @@ export default function SpotifyTable({
                         <th
                           className={clsx(
                             meta.class,
-                            'border-b border-slate-400 border-opacity-50 p-2',
+                            'border-b border-slate-400/50 p-2',
                           )}
                           key={header.id}
                         >
@@ -499,13 +499,13 @@ export default function SpotifyTable({
                   return (
                     <tr
                       key={row.id}
-                      className="group/row focus-within:bg-blue-300 focus-within:bg-opacity-10 hover:bg-blue-300 hover:bg-opacity-10"
+                      className="group/row focus-within:bg-blue-300/10 hover:bg-blue-300/10"
                     >
                       {row.getVisibleCells().map((cell) => (
                         <td
                           className={clsx(
                             getColumnMeta(cell.column.columnDef)?.class,
-                            'p-2 first-of-type:rounded-l last-of-type:rounded-r',
+                            'p-2 first-of-type:rounded-l-sm last-of-type:rounded-r-sm',
                           )}
                           key={`${cell.column.id}-${cell.id}`}
                         >

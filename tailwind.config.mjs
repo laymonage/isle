@@ -1,6 +1,5 @@
 import typography from '@tailwindcss/typography';
 import styles from '@tailwindcss/typography/src/styles';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 
 /** Sourced from https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js */
 export const round = (num) =>
@@ -95,7 +94,7 @@ export default {
               '@apply text-pink-600 dark:text-red-300': '',
             },
             code: {
-              '@apply rounded bg-gray-500 bg-opacity-5 p-1 font-medium': '',
+              '@apply rounded-sm bg-gray-500/5 p-1 font-medium': '',
             },
             'code::before': {
               content: '',
@@ -104,7 +103,7 @@ export default {
               content: '',
             },
             'img, video, iframe': {
-              '@apply mx-auto flex justify-center rounded': '',
+              '@apply mx-auto flex justify-center rounded-sm': '',
             },
             iframe: {
               '@apply aspect-video w-full': '',
@@ -117,7 +116,7 @@ export default {
               width: '100vw',
               marginInlineStart: 'calc(50% - 50vw)',
               ':where(img, video, iframe)': {
-                '@apply rounded-none sm:rounded': '',
+                '@apply rounded-none sm:rounded-sm': '',
               },
             },
             '.bleed-full > *': {

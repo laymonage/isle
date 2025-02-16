@@ -22,12 +22,12 @@ const { item } = Astro.props;
 <div class="flex flex-col items-center sm:flex-row">
   {
     item.image ? (
-      <div class="mb-6 mr-0 w-9/12 rounded p-2 sm:mb-0 sm:mr-8 sm:w-5/12">
+      <div class="mb-6 mr-0 w-9/12 rounded-sm p-2 sm:mb-0 sm:mr-8 sm:w-5/12">
         <div class="relative h-48 sm:h-36">
           <img
             alt={item.title}
             class:list={[
-              'rounded h-full object-contain',
+              'rounded-sm h-full object-contain',
               { 'dark:bg-white': item.image.lowContrast },
             ]}
             src={item.image.src}

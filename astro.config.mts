@@ -10,7 +10,7 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 import vercel from '@astrojs/vercel';
 
@@ -58,7 +58,6 @@ export default defineConfig({
     }),
     react(),
     icon(),
-    tailwind(),
     pagefind(),
     astroOgImagesGenerator(paths),
     sitemapCopier(),
@@ -97,6 +96,7 @@ export default defineConfig({
     resolve: {
       extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
     },
+    plugins: [tailwindcss()],
   },
   adapter: vercel(),
 });
