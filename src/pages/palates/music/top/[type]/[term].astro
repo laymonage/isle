@@ -2,6 +2,7 @@
 import Link from '../../../../../components/Link.astro';
 import SpotifyTable from '../../../../../components/palates/SpotifyTable';
 import Palate from '../../../../../layouts/Palate.astro';
+import { prose } from '../../../../../lib/classes';
 import {
   getSpotifyDataURL,
   simplifyTrack,
@@ -30,7 +31,7 @@ const tIdx = terms.indexOf(term);
   description={`The top ${type} on my Spotify within a given time frame.`}
   title={`Top ${type}`}
 >
-  <p>
+  <p class={prose}>
     <Link
       href="https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks"
     >

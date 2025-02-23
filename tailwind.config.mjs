@@ -61,16 +61,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['"Source Sans 3"', ...fontFamily.sans],
-      },
-      strokeWidth: {
-        unset: 'unset',
-      },
       typography: () => ({
         DEFAULT: {
           css: {
-            '@apply break-words': '',
+            'overflow-wrap': 'break-word',
             h1: {
               fontWeight: '600',
             },
@@ -91,10 +85,17 @@ export default {
               content: '',
             },
             'p code:not(a code), li code:not(a code)': {
-              '@apply text-pink-600 dark:text-red-300': '',
+              color: 'var(--color-pink-600)',
+              '&:is(.dark *)': {
+                color: 'var(--color-red-300)',
+              },
             },
             code: {
-              '@apply rounded-sm bg-gray-500/5 p-1 font-medium': '',
+              'border-radius': 'var(--radius-sm)',
+              'background-color':
+                'color-mix(in oklab, var(--color-gray-500) 5%, transparent)',
+              padding: 'var(--spacing)',
+              'font-weight': 'var(--font-weight-medium)',
             },
             'code::before': {
               content: '',
@@ -103,10 +104,14 @@ export default {
               content: '',
             },
             'img, video, iframe': {
-              '@apply mx-auto flex justify-center rounded-sm': '',
+              'margin-inline': 'auto',
+              display: 'flex',
+              'justify-content': 'center',
+              'border-radius': 'var(--radius-sm)',
             },
             iframe: {
-              '@apply aspect-video w-full': '',
+              width: '100%',
+              'aspect-ratio': '16 / 9',
             },
             // Bleed layout
             // We don't want to use the grid-column 1 / -1 approach here
@@ -116,11 +121,13 @@ export default {
               width: '100vw',
               marginInlineStart: 'calc(50% - 50vw)',
               ':where(img, video, iframe)': {
-                '@apply rounded-none sm:rounded-sm': '',
+                'border-radius': '0',
+                // '@apply rounded-none sm:rounded-sm': '',
               },
             },
             '.bleed-full > *': {
-              '@apply w-screen rounded-none': '',
+              width: '100vw',
+              'border-radius': '0',
             },
           },
         },

@@ -33,7 +33,7 @@ const posts = await getSortedCollection('gsoc');
         {posts.map((post) => (
           <ListItem>
             <Link
-              class="text-gray-700 dark:text-gray-300"
+              class="text-primary"
               href={`/gsoc/${post.id}`}
             >
               <Card>
@@ -45,7 +45,7 @@ const posts = await getSortedCollection('gsoc');
                       format={{ month: 'long', day: 'numeric' }}
                     />
                   </div>
-                  <p class="text-gray-700 dark:text-gray-300">
+                  <p class="text-primary">
                     {post.data.description}
                   </p>
                 </div>

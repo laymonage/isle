@@ -1,2 +1,98 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @config "../../tailwind.config.mjs";
+
+@theme {
+  --default-font-family: "Source Sans 3", var(--font-sans);
+}
+
+@layer base {
+  :where(label):focus-within {
+    outline-style: auto;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  b,
+  strong {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  button,
+  details summary {
+    cursor: pointer;
+  }
+
+  details summary > * {
+    display: inline;
+  }
+}
+
+@layer utilities {
+  a,
+  .alike,
+  .prose a {
+    &:where(:not(:has(h1, h2, h3, h4, h5, h6))),
+    :where(h1, h2, h3, h4, h5, h6) {
+      @apply underline underline-offset-3 decoration-1 decoration-blue-400/50;
+
+      &:where(:hover, :focus) {
+        text-decoration-color: var(--color-blue-700);
+        &:where(.dark *) {
+          text-decoration-color: var(--color-blue-200);
+        }
+      }
+    }
+
+    &:where(:not(.text-primary, .text-secondary, .text-custom)) {
+      color: var(--color-blue-800);
+
+      &:where(.dark *) {
+        color: var(--color-blue-300);
+      }
+    }
+
+    &:where(:hover, :focus) {
+      color: var(--color-blue-700);
+
+      &:where(.dark *) {
+        color: var(--color-blue-200);
+      }
+    }
+  }
+
+  [id="table-of-contents"] {
+    @apply text-xl;
+
+    .anchor-link {
+      @apply hidden;
+    }
+  }
+
+  .anchor-link {
+    @apply w-6 sm:-ml-6 inline-block;
+  }
+
+  .prose {
+    @apply break-words;
+  }
+  body,
+  .bg-primary {
+    @apply bg-white text-lg leading-relaxed sm:text-xl sm:leading-relaxed dark:bg-gray-900;
+  }
+
+  body,
+  .text-primary {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .text-secondary {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  .toc {
+    @apply text-lg border border-gray-400/20 rounded-lg bg-slate-400/10;
+  }
+}
