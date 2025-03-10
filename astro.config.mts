@@ -22,7 +22,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import { astroOgImagesGenerator } from 'og-images-generator/astro';
 
-import { paths } from './og-images.config';
 import { copyButton } from './src/lib/shiki';
 
 // https://astro.build/config
@@ -55,7 +54,11 @@ export default defineConfig({
     react(),
     icon(),
     pagefind(),
-    astroOgImagesGenerator(paths),
+    astroOgImagesGenerator({
+      base: './dist/client',
+      out: './dist/client/og',
+      json: './dist/client/og/index.json',
+    }),
   ],
   markdown: {
     shikiConfig: {

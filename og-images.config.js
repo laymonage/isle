@@ -3,20 +3,6 @@
 import { readFileSync } from 'node:fs';
 import { OG_SIZE, fetchFont, html, styled } from 'og-images-generator';
 
-/** @type {import('og-images-generator').PathsOptions} (Optional) */
-export const paths = process.env.VERCEL
-  ? {
-      base: './.vercel/output/static/',
-      out: './.vercel/output/static/og',
-      json: './.vercel/output/static/og/index.json',
-    }
-  : {
-      // DEFAULTS:
-      base: './dist',
-      out: './dist/og',
-      json: './dist/og/index.json',
-    };
-
 const backgroundImage = readFileSync('./public/bg.svg', {
   encoding: 'base64',
 });
