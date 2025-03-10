@@ -1,7 +1,3 @@
-import { cp, readdir } from 'node:fs/promises';
-import { basename, extname, join } from 'node:path';
-
-import type { AstroIntegration } from 'astro';
 import { defineConfig } from 'astro/config';
 
 import mdx from '@astrojs/mdx';
@@ -60,7 +56,6 @@ export default defineConfig({
     icon(),
     pagefind(),
     astroOgImagesGenerator(paths),
-    sitemapCopier(),
   ],
   markdown: {
     shikiConfig: {
@@ -100,33 +95,3 @@ export default defineConfig({
   },
   adapter: vercel(),
 });
-
-function sitemapCopier(): AstroIntegration {
-  // https://github.com/withastro/adapters/issues/445#issuecomment-2528370475
-  return {
-    name: 'sitemap-copier',
-    hooks: {
-      'astro:build:done': async ({ logger }) => {
-        const buildLogger = logger.fork('sitemap-copier');
-        buildLogger.info('Copying xml files from dist to vercel out');
-        try {
-          const files = await readdir('./dist/client');
-          const xmlFiles = files.filter(
-            (file) =>
-              extname(file).toLowerCase() === '.xml' &&
-              basename(file).toLowerCase().startsWith('sitemap'),
-          );
-          buildLogger.info(xmlFiles.join(', '));
-          for (const file of xmlFiles) {
-            const sourcePath = join('./dist/client', file);
-            const destPath = join('./.vercel/output/static', file);
-            await cp(sourcePath, destPath);
-          }
-          buildLogger.info('All XML files copied successfully');
-        } catch (error) {
-          buildLogger.error(`Error copying files: ${error}`);
-        }
-      },
-    },
-  };
-}
