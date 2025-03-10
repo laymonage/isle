@@ -12,7 +12,7 @@ import vercel from '@astrojs/vercel';
 
 import icon from 'astro-icon';
 
-import pagefind from 'astro-pagefind';
+import pagefind from './src/lib/pagefind';
 
 import remarkToc from './src/lib/toc';
 
