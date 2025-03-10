@@ -6,7 +6,7 @@ import { OG_SIZE, fetchFont, html, styled } from 'og-images-generator';
 /** @type {import('og-images-generator').PathsOptions} (Optional) */
 export const paths = process.env.VERCEL
   ? {
-      base: './.vercel/output/static/',
+      base: './dist/',
       out: './.vercel/output/static/og',
       json: './.vercel/output/static/og/index.json',
     }
