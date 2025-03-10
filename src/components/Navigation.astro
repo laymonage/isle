@@ -18,9 +18,9 @@ const subpath = pathname.match(/[^\/]+/g);
 
 <l-nav class="block group">
   <nav
-    class="ease fixed text-lg group-open:pt-3 sm:p-0 bottom-0 sm:top-0 sm:bottom-auto z-20 flex w-full max-w-[inherit] mx-auto transform flex-col-reverse bg-white transition-transform duration-300 dark:bg-slate-800 sm:flex-row sm:items-center sm:justify-between drop-shadow"
+    class="ease fixed text-lg group-open:pt-3 sm:p-0 bottom-0 sm:top-0 sm:bottom-auto z-20 flex w-full max-w-[inherit] mx-auto transform flex-col-reverse bg-white transition-transform duration-300 dark:bg-slate-800 sm:flex-row sm:items-center sm:justify-between drop-shadow-sm"
   >
-    <div class="py-3 mx-4 flex flex-grow items-center justify-between">
+    <div class="py-3 mx-4 flex grow items-center justify-between">
       <Link
         aria-label="Home"
         class="mr-2 text-blue-800 dark:text-blue-200"
@@ -63,7 +63,7 @@ const subpath = pathname.match(/[^\/]+/g);
         Object.entries(menu).map(([path, label]) => (
           <Link
             class:list={[
-              'mb-2 block rounded p-2 font-semibold capitalize hover:bg-blue-100 hover:bg-opacity-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50 sm:mb-0 sm:ml-4 sm:first:ml-0 -outline-offset-2',
+              'mb-2 block rounded-sm p-2 font-semibold capitalize hover:bg-blue-100/50 dark:hover:bg-gray-700/50 sm:mb-0 sm:ml-4 sm:first:ml-0 -outline-offset-2',
               {
                 'text-blue-700 dark:text-blue-200': path === subpath?.[0],
               },

@@ -23,14 +23,14 @@ export default function Search({
   return (
     <div className={`flex ${className}`}>
       <DebouncedInput
-        className={`w-full flex-grow rounded border-2 border-gray-400 border-opacity-20 bg-gray-300 bg-opacity-10 px-4 py-2 hover:bg-opacity-30 focus:bg-opacity-30 focus:outline-none sm:rounded-r-none sm:border-r-0 ${inputClassName}`}
+        className={`w-full grow rounded-sm border-2 border-gray-400/20 bg-gray-300/10 px-4 py-2 hover:bg-gray-300/30 focus:bg-gray-300/30 focus:outline-hidden sm:rounded-r-none sm:border-r-0 ${inputClassName}`}
         placeholder="Type what you're looking for..."
         type="text"
         {...props}
         ref={inputRef}
       />
       <kbd
-        className="my-auto hidden h-full rounded rounded-l-none border-2 border-gray-400 border-opacity-20 bg-gray-400 bg-opacity-20 p-2 text-gray-400 sm:block"
+        className="my-auto hidden h-full rounded-sm rounded-l-none border-2 border-gray-400/20 bg-gray-400/20 p-2 text-gray-400 sm:block"
         title="Press / to focus"
       >
         /

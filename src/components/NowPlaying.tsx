@@ -28,7 +28,7 @@ export default function NowPlaying({ icon }: { icon?: astroHTML.JSX.Element }) {
       </div>
       {icon ? (
         <div
-          className={clsx('flex-shrink-0', {
+          className={clsx('shrink-0', {
             'h-8 w-8': isPlaying,
             'h-6 w-6': !isPlaying,
           })}

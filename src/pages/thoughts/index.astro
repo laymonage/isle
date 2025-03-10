@@ -24,7 +24,7 @@ const thoughts = await getSortedCollection('thoughts');
         {thoughts!.map((thought) => (
           <ListItem>
             <Link
-              class="mt-4 block text-gray-700 dark:text-gray-300"
+              class="mt-4 block text-primary"
               href={`/thoughts/${thought.id}`}
             >
               <h2 class="flex flex-col sm:flex-row items-baseline gap-x-4 gap-y-2 text-xl">

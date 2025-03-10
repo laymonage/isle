@@ -40,7 +40,7 @@ const logs = await getGroupedLogs();
             {logs!.map((log) => (
               <ListItem>
                 <Link
-                  class="mt-6 block text-gray-700 dark:text-gray-300"
+                  class="mt-6 block text-primary"
                   href={`/logs/${log.id}`}
                 >
                   <h2 class="text-lg">Week {log.data.week}</h2>

@@ -69,12 +69,12 @@ const groups = [
           {playlists.map(({ id, images, name }) => (
             <li>
               <Link
-                class="flex flex-col gap-2 rounded-lg p-4 hover:bg-blue-300 hover:bg-opacity-10"
+                class="flex flex-col gap-2 rounded-lg p-4 hover:bg-blue-300 hover:bg-blue-300/10"
                 href={`/palates/music/playlists/${id}`}
               >
                 <img
                   alt=""
-                  class="aspect-square h-full w-full rounded object-cover"
+                  class="aspect-square h-full w-full rounded-sm object-cover"
                   src={images?.[0].url}
                 />
                 <div class="overflow-clip text-ellipsis whitespace-nowrap font-semibold">
