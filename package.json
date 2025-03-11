@@ -26,7 +26,7 @@
     "astro": "^5.4.2",
     "astro-icon": "^1.1.5",
     "astro-og-canvas": "^0.7.0",
-    "astro-pagefind": "^1.8.1",
+    "astro-pagefind": "^1.8.2",
     "date-fns": "^4.1.0",
     "entities": "^6.0.0",
     "giscus": "^1.6.0",
