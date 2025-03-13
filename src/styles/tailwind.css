@@ -96,8 +96,7 @@
   .prose {
     @apply break-words max-w-[initial];
 
-    h1,
-    h2 {
+    :where(h1, h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
       @apply font-semibold;
 
       strong {
@@ -105,30 +104,35 @@
       }
     }
 
-    blockquote p {
+    :where(blockquote p):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply first-of-type:before:content-none last-of-type:after:content-none;
     }
 
-    p code:not(a code),
-    li code:not(a code) {
+    :where(p code:not(a code), li code:not(a code)):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply text-pink-600 dark:text-red-300;
     }
 
-    code:not(pre code) {
+    :where(code:not(pre code)):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply rounded bg-gray-500/5 p-1 font-medium before:content-none after:content-none;
     }
 
-    img,
-    video,
-    iframe {
+    :where(img, video, iframe):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply mx-auto flex justify-center rounded;
     }
 
-    iframe {
+    :where(iframe):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
       @apply aspect-video w-full;
     }
 
-    .bleed {
+    :where(.bleed):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
       @apply w-screen ml-[calc(50%-50vw)];
 
       :where(img, video, iframe) {
@@ -136,7 +140,9 @@
       }
     }
 
-    .bleed-full > * {
+    :where(.bleed-full > *):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply w-screen rounded-none;
     }
   }
