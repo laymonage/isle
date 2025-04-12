@@ -43,10 +43,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
     "@types/spotify-api": "^0.0.25",
-    "lefthook": "^1.11.6",
+    "lefthook": "^1.11.9",
     "sass-embedded": "^1.86.3"
   }
 }
