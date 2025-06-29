@@ -1,9 +1,9 @@
 import {
   type ChangeEvent,
   type ChangeEventHandler,
+  forwardRef,
   type InputHTMLAttributes,
   type Ref,
-  forwardRef,
   useEffect,
   useState,
 } from 'react';

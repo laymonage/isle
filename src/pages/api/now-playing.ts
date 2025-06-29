@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
 
 import {
-  type NowPlaying,
   adaptNowPlaying,
   getNowPlaying,
+  type NowPlaying,
 } from '../../lib/spotify';
 
 export const GET: APIRoute = async () => {

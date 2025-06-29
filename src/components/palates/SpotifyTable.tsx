@@ -2,13 +2,13 @@ import {
   type CellContext,
   type ColumnDef,
   type ColumnHelper,
-  type Row,
-  type SortingState,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getSortedRowModel,
+  type Row,
+  type SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
@@ -19,8 +19,12 @@ import {
   useRef,
   useState,
 } from 'react';
-import { formatDate, msToDuration, msToMinutes } from '../../lib/datetime';
-import { relativeFormat } from '../../lib/datetime';
+import {
+  formatDate,
+  msToDuration,
+  msToMinutes,
+  relativeFormat,
+} from '../../lib/datetime';
 import type { AlbumSimplified, TrackSimplified } from '../../lib/spotify';
 import { AudioProvider } from '../AudioProvider';
 import Icon from '../Icon';
@@ -112,7 +116,11 @@ const columns = {
   number: columnHelper.display({
     id: 'number',
     cell: ({ row: { index } }) => index + 1,
-    header: () => <span aria-label="Number">#</span>,
+    header: () => (
+      <span aria-hidden="true">
+        # <span className="sr-only">(Number)</span>
+      </span>
+    ),
     meta: {
       label: 'Number',
       class: 'w-[6%] text-center tabular-nums',
@@ -130,7 +138,11 @@ const columns = {
         previewUrl={row.preview_url}
       />
     ),
-    header: () => <span aria-label="Track number">#</span>,
+    header: () => (
+      <span aria-hidden="true">
+        # <span className="sr-only">(Track number)</span>
+      </span>
+    ),
     meta: {
       label: 'Track number',
       class: 'w-[6.5%] text-center tabular-nums',

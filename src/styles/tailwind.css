@@ -63,16 +63,16 @@
     }
   }
 
+  .anchor-link {
+    @apply w-6 sm:-ml-6 inline-block;
+  }
+
   [id="table-of-contents"] {
     @apply text-xl;
 
     .anchor-link {
       @apply hidden;
     }
-  }
-
-  .anchor-link {
-    @apply w-6 sm:-ml-6 inline-block;
   }
 
   body,

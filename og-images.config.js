@@ -1,7 +1,7 @@
 // ./og-images.config.js
 
 import { readFileSync } from 'node:fs';
-import { OG_SIZE, fetchFont, html, styled } from 'og-images-generator';
+import { fetchFont, html, OG_SIZE, styled } from 'og-images-generator';
 
 const backgroundImage = readFileSync('./public/bg.svg', {
   encoding: 'base64',

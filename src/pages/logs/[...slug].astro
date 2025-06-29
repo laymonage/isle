@@ -1,8 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import readingTime from 'reading-time';
-import { getContentStaticPaths } from '../../content/config';
-import { humanizeLogSlug } from '../../content/config';
+import { getContentStaticPaths, humanizeLogSlug } from '../../content/config';
 import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {

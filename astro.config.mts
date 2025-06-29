@@ -1,28 +1,20 @@
-import { defineConfig } from 'astro/config';
-
 import mdx from '@astrojs/mdx';
-
-import sitemap from '@astrojs/sitemap';
-
 import react from '@astrojs/react';
 
-import tailwindcss from '@tailwindcss/vite';
-
+import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
+
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
 
 import pagefind from 'astro-pagefind';
-
-import remarkToc from './src/lib/toc';
-
-import rehypeSlug from 'rehype-slug';
-
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-
 import { astroOgImagesGenerator } from 'og-images-generator/astro';
-
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 import { copyButton } from './src/lib/shiki';
+import remarkToc from './src/lib/toc';
 
 // https://astro.build/config
 export default defineConfig({

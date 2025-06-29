@@ -8,8 +8,8 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/sourcesans3/v15/nwpMtKy2OAdR1K-IwhWudF-R3woqauLYxnV18JRx.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 /* cyrillic */
 @font-face {
@@ -39,8 +39,8 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/sourcesans3/v15/nwpMtKy2OAdR1K-IwhWudF-R3woqZOLYxnV18JRx.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 /* vietnamese */
 @font-face {
@@ -88,8 +88,8 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/sourcesans3/v15/nwpStKy2OAdR1K-IwhWudF-R3wIaZejf5HdF8Q.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 /* cyrillic */
 @font-face {
@@ -119,8 +119,8 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/sourcesans3/v15/nwpStKy2OAdR1K-IwhWudF-R3wwaZejf5HdF8Q.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 /* vietnamese */
 @font-face {

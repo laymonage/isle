@@ -13,7 +13,7 @@ const menu = {
 };
 
 const { pathname } = Astro.url;
-const subpath = pathname.match(/[^\/]+/g);
+const subpath = pathname.match(/[^/]+/g);
 ---
 
 <l-nav class="block group">
