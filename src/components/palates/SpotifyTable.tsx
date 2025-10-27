@@ -450,11 +450,21 @@ export default function SpotifyTable({
                       const sortDirection = header.column.getIsSorted();
                       const sortInfo = {
                         asc: {
-                          component: <Icon name="tabler:arrow-up" />,
+                          component: (
+                            <Icon
+                              className="shrink-0 stroke-[2.5]"
+                              name="tabler:arrow-up"
+                            />
+                          ),
                           otherLabel: 'descending',
                         },
                         desc: {
-                          component: <Icon name="tabler:arrow-down" />,
+                          component: (
+                            <Icon
+                              className="shrink-0 stroke-[2.5]"
+                              name="tabler:arrow-down"
+                            />
+                          ),
                           otherLabel: 'ascending',
                         },
                       }[sortDirection as string];
@@ -469,7 +479,7 @@ export default function SpotifyTable({
                         <th
                           className={clsx(
                             meta.class,
-                            'border-b border-slate-400/50 p-2',
+                            'border-b border-slate-400/50 p-2 font-semibold',
                           )}
                           key={header.id}
                         >

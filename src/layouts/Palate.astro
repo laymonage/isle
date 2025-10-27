@@ -17,7 +17,7 @@ const { description, title } = Astro.props;
       <p class={prose}>{description}</p>
     </div>
   </slot>
-  <div class="hidden [&_symbol>*]:stroke-none">
+  <div class="hidden [&_symbol>*]:[stroke-width:unset]">
     <Icon name="tabler:music" />
     <Icon name="tabler:player-pause-filled" />
     <Icon name="tabler:player-play-filled" />
