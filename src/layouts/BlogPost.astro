@@ -35,7 +35,7 @@ const renderedTitle = await md(title);
   <article>
     <div class="mt-4 flex-row">
       <h1
-        class="mb-4 text-5xl font-semibold tracking-tight text-black dark:text-white"
+        class="mb-4 text-5xl font-semibold tracking-tight text-black dark:text-white [&_code]:wrap-break-word"
         set:html={renderedTitle}
       />
       {
