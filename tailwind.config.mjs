@@ -63,6 +63,9 @@ export default {
     extend: {
       typography: () => ({
         // We only ever use the lg and xl variants, see lib/classes.ts
+        // However, we also need to override the DEFAULT style to remove the
+        // default padding on pre elements.
+        DEFAULT: modifyStyles('DEFAULT'),
         sm: modifyStyles('sm'),
         base: modifyStyles('base'),
         lg: modifyStyles('lg'),
