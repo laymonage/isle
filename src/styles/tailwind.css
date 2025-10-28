@@ -94,7 +94,7 @@
   }
 
   .prose {
-    @apply break-words max-w-[initial];
+    @apply wrap-break-word max-w-[initial];
 
     :where(h1, h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
       @apply font-semibold;
