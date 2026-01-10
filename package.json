@@ -16,16 +16,16 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^9.0.2",
-    "@iconify-json/tabler": "^1.2.25",
+    "@astrojs/sitemap": "^3.6.1",
+    "@astrojs/vercel": "^9.0.3",
+    "@iconify-json/tabler": "^1.2.26",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-table": "^8.21.3",
-    "@tanstack/react-virtual": "^3.13.14",
-    "astro": "^5.16.6",
+    "@tanstack/react-virtual": "^3.13.18",
+    "astro": "^5.16.8",
     "astro-icon": "^1.1.5",
-    "astro-og-canvas": "^0.7.2",
+    "astro-og-canvas": "^0.10.0",
     "astro-pagefind": "^1.8.5",
     "date-fns": "^4.1.0",
     "entities": "^7.0.0",
@@ -42,11 +42,11 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.3.11",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/spotify-api": "^0.0.25",
     "lefthook": "^2.0.13",
-    "sass-embedded": "^1.97.1"
+    "sass-embedded": "^1.97.2"
   }
 }
