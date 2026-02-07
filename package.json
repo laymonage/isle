@@ -25,7 +25,7 @@
     "@tanstack/react-virtual": "^3.13.18",
     "astro": "^5.17.1",
     "astro-icon": "^1.1.5",
-    "astro-og-canvas": "^0.10.0",
+    "astro-og-canvas": "^0.10.1",
     "astro-pagefind": "^1.8.5",
     "date-fns": "^4.1.0",
     "entities": "^7.0.1",
@@ -37,16 +37,16 @@
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
-    "swr": "^2.3.8",
+    "swr": "^2.4.0",
     "tailwindcss": "^4.0.12",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.13",
-    "@types/react": "^19.2.10",
+    "@biomejs/biome": "2.3.14",
+    "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "@types/spotify-api": "^0.0.25",
-    "lefthook": "^2.0.16",
+    "lefthook": "^2.1.0",
     "sass-embedded": "^1.97.3"
   }
 }
