@@ -23,7 +23,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "^3.13.18",
-    "astro": "^5.17.1",
+    "astro": "^5.17.2",
     "astro-icon": "^1.1.5",
     "astro-og-canvas": "^0.10.1",
     "astro-pagefind": "^1.8.5",
@@ -42,11 +42,11 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
-    "@types/react": "^19.2.13",
+    "@biomejs/biome": "2.3.15",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/spotify-api": "^0.0.25",
-    "lefthook": "^2.1.0",
+    "lefthook": "^2.1.1",
     "sass-embedded": "^1.97.3"
   }
 }
