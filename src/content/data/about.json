@@ -1,7 +1,52 @@
 [
   {
+    "id": 2025,
+    "items": [
+      {
+        "emoji": "🇩🇪",
+        "title": "Germany trip",
+        "description": "Visited Germany for the first time. Attended GSoC Mentor Summit for the third time. Spent a week in Munich, and another in Reutlingen/Tubingen."
+      },
+      {
+        "emoji": "👑",
+        "title": "Spoke at PyCon UK",
+        "description": "My first PyCon ever. Gave a rehash of my DjangoCon US talk about my journey from being a student to a maintainer."
+      },
+      {
+        "emoji": "🇬🇧",
+        "title": "Switched to the Global Talent visa",
+        "description": "Endorsed as an exceptional talent. With this, I could get indefinite leave to remain after living in the UK for three years!"
+      },
+      {
+        "emoji": "🚲",
+        "title": "Got a bike",
+        "description": "Bought a used bike from the Bristol Bike Project. Took it to Bath and other places around Bristol."
+      },
+      {
+        "emoji": "🇮🇪",
+        "title": "Went to DjangoCon Europe",
+        "description": "It's my first DjangoCon where I did not give a talk nor a workshop. I did do a lightning talk and organised a Wagtail sprint, though!"
+      },
+      {
+        "emoji": "🚙",
+        "title": "Jakarta – Bromo road trip",
+        "description": "My family and I did our first road trip. I went up to see Bromo's crater!"
+      }
+    ]
+  },
+  {
     "id": 2024,
     "items": [
+      {
+        "emoji": "📡",
+        "title": "Started streaming",
+        "description": "Streamed myself working on open source projects and playing games, on Twitch and YouTube. Just for fun, but who knows where it will lead to!"
+      },
+      {
+        "emoji": "🖥️",
+        "title": "Built a gaming rig",
+        "description": "It's my second build – my first one was back in 2015 when I was still in high school. It's quite beefy!"
+      },
       {
         "emoji": "🚙",
         "title": "East – west coast road trip",
@@ -34,13 +79,8 @@
       },
       {
         "emoji": "☀️",
-        "title": "Went to Google Summer of Code Mentor Summit",
-        "description": "Represented Wagtail at the mentor summit and met a lot of other open source project maintainers."
-      },
-      {
-        "emoji": "☀️",
         "title": "Represented Wagtail at the Google Summer of Code Mentor Summit",
-        "description": "Thibaud and I went to the Google Summer of Code Mentor Summit in California. It was my first time in the US and we went on a road trip from Los Angeles to San Francisco!"
+        "description": "Thibaud and I represented Wagtail at the Google Summer of Code Mentor Summit in California. We met and talked with other open source project maintainers. It was my first time in the US and we went on a road trip from Los Angeles to San Francisco!"
       },
       {
         "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
