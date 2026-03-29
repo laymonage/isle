@@ -9,10 +9,10 @@ import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
 
-import pagefind from 'astro-pagefind';
 import { astroOgImagesGenerator } from 'og-images-generator/astro';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import pagefind from './src/lib/pagefind';
 import { copyButton } from './src/lib/shiki';
 import remarkToc from './src/lib/toc';
 
