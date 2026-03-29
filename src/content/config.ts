@@ -2,11 +2,11 @@ import {
   type AnyEntryMap,
   defineCollection,
   getCollection,
-  z,
 } from 'astro:content';
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import { rssSchema } from '@astrojs/rss';
 import { file, glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const baseSchema = z.object({
   title: z.string(),
