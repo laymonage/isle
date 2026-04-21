@@ -66,12 +66,18 @@ export const getNowPlaying = async () =>
 export const adaptNowPlaying = (
   track: SpotifyApi.CurrentlyPlayingObject,
 ): NowPlaying => {
-  const isPlaying = track.is_playing && !!track.item;
+  const isPlaying = track.is_playing;
   let title = '';
   let artist = '';
   let album = '';
   let albumImageUrl = '';
   let trackUrl = '';
+
+  // They stopped providing podcast details :(
+  if (track.currently_playing_type === 'episode') {
+    artist = 'Podcast';
+    title = 'Now playing';
+  }
 
   if (track.item) {
     title = track.item.name;
@@ -83,7 +89,6 @@ export const adaptNowPlaying = (
       albumImageUrl = track.item.album.images[0]?.url || '';
     } else {
       // Currently playing episode
-      artist = track.item.show.publisher;
       album = track.item.show.name;
       albumImageUrl = track.item.show.images[0]?.url || '';
     }

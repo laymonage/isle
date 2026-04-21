@@ -49,7 +49,7 @@ const spotifyUrl =
 const tracks = isSavedTracks
   ? tracksFull.map((track) => trackSchema.parse(track))
   : tracksFull
-      .filter((playlistItem) => !!playlistItem?.track)
+      .filter((playlistItem) => !!playlistItem?.item)
       .map((track) => trackSchema.parse(simplifyPlaylistTrack(track)));
 
 const duration =

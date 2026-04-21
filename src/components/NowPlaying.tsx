@@ -12,7 +12,7 @@ export default function NowPlaying({ icon }: { icon?: astroHTML.JSX.Element }) {
   return (
     <a
       className="ml-auto flex min-h-[56px] max-w-full items-center"
-      href={isPlaying ? data?.trackUrl : SPOTIFY_PROFILE_URL}
+      href={(isPlaying && data?.trackUrl) || SPOTIFY_PROFILE_URL}
       target="_blank"
       rel="noopener noreferrer nofollow"
     >
@@ -20,7 +20,7 @@ export default function NowPlaying({ icon }: { icon?: astroHTML.JSX.Element }) {
         {data && isPlaying ? (
           <>
             <p className="truncate">{data.artist}</p>
-            <p className="truncate">{data.title}</p>
+            {data.title && <p className="truncate">{data.title}</p>}
           </>
         ) : (
           <p>Not playing</p>
