@@ -1,5 +1,5 @@
 import {
-  type AnyEntryMap,
+  type DataEntryMap,
   defineCollection,
   getCollection,
 } from 'astro:content';
@@ -92,7 +92,7 @@ const palates = defineCollection({
   schema: baseSchema,
 });
 
-export const getContentStaticPaths = async <C extends keyof AnyEntryMap>(
+export const getContentStaticPaths = async <C extends keyof DataEntryMap>(
   collection: C,
 ) =>
   (await getCollection(collection)).map((entry) => ({

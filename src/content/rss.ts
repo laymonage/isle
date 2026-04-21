@@ -1,6 +1,6 @@
 import AstroRSS from '@astrojs/rss';
 import type { APIContext } from 'astro';
-import { getRssItems, sortFeedItems } from './config';
+import { getRssItems, sortFeedItems } from '../content.config';
 
 export const posts = {
   title: "laymonage's blog posts",
