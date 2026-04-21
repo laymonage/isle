@@ -9,11 +9,11 @@ import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
 
-import { astroOgImagesGenerator } from 'og-images-generator/astro';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import pagefind from './src/lib/pagefind';
 import { copyButton } from './src/lib/shiki';
+import takumi from './src/lib/takumi';
 import remarkToc from './src/lib/toc';
 
 // https://astro.build/config
@@ -46,11 +46,7 @@ export default defineConfig({
     react(),
     icon(),
     pagefind(),
-    astroOgImagesGenerator({
-      base: './dist/client',
-      out: './dist/client/og',
-      json: './dist/client/og/index.json',
-    }),
+    takumi(),
   ],
   markdown: {
     shikiConfig: {

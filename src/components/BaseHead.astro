@@ -8,25 +8,23 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
-  image?: string;
 }
 
 const pathname = Astro.url.pathname;
 
 const canonicalURL = new URL(pathname, Astro.site);
 
-const imagePathname =
-  (pathname.endsWith('/') ? pathname.slice(0, -1) : pathname) || '/index';
-
-const {
-  title: _title,
-  description,
-  image = `/og${imagePathname}.png`,
-} = Astro.props;
+const { title: _title, description } = Astro.props;
 const titleWithSite = _title ? `${_title} | ${SITE_TITLE}` : SITE_TITLE;
 const title = _title || SITE_TITLE;
 
 const fonts = ['sourcesans3-latin-normal-v15', 'sourcesans3-latin-italic-v15'];
+const url = `${Astro.url}`.replace(/\/$/, '');
+const imageUrl = new URL('og.webp', `${url}/`);
+const metadata = JSON.stringify({
+  title: _title || "laymonage's personal website",
+  url: `${url}`.replace(/^https?:\/\//, ''),
+});
 ---
 
 <!-- Global Metadata -->
@@ -65,14 +63,14 @@ const fonts = ['sourcesans3-latin-normal-v15', 'sourcesans3-latin-italic-v15'];
 <meta content={Astro.url} property="og:url" />
 <meta content={title} property="og:title" />
 <meta content={description} property="og:description" />
-<meta content={new URL(image, Astro.url)} property="og:image" />
+<meta content={imageUrl} property="og:image" />
 
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card" />
 <meta content={Astro.url} property="twitter:url" />
 <meta content={title} property="twitter:title" />
 <meta content={description} property="twitter:description" />
-<meta content={new URL(image, Astro.url)} property="twitter:image" />
+<meta content={imageUrl} property="twitter:image" />
 
 <!-- RSS Feed -->
 <link
@@ -84,6 +82,9 @@ const fonts = ['sourcesans3-latin-normal-v15', 'sourcesans3-latin-italic-v15'];
 
 <!-- Sitemap -->
 <link href="/sitemap-index.xml" rel="sitemap" />
+
+<!-- Custom metadata for generating OG images -->
+<script data-page-metadata type="application/json" is:inline set:html={metadata}></script>
 
 <!-- Umami -->
 {
