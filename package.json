@@ -13,18 +13,18 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/mdx": "^5.0.3",
-    "@astrojs/react": "^5.0.3",
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/react": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/vercel": "^10.0.4",
     "@iconify-json/tabler": "^1.2.33",
     "@pagefind/default-ui": "^1.5.2",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.4",
     "@tanstack/react-table": "^8.21.3",
-    "@tanstack/react-virtual": "^3.13.23",
-    "astro": "^6.1.7",
+    "@tanstack/react-virtual": "^3.13.24",
+    "astro": "^6.1.9",
     "astro-icon": "^1.1.5",
     "date-fns": "^4.1.0",
     "entities": "^8.0.0",
@@ -40,14 +40,14 @@
     "swr": "^2.4.1",
     "tailwindcss": "^4.2.2",
     "takumi-js": "^1.1.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.11",
+    "@biomejs/biome": "2.4.13",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/spotify-api": "^0.0.26",
-    "lefthook": "^2.1.5",
+    "lefthook": "^2.1.6",
     "sass-embedded": "^1.99.0"
   }
 }
