@@ -1,3 +1,5 @@
+/// <reference types="spotify-api" />
+
 import { z } from 'astro/zod';
 
 interface RefreshTokenResponse {
