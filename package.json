@@ -42,11 +42,6 @@
     "takumi-js": "^1.1.2",
     "typescript": "^6.0.3"
   },
-  "overrides": {
-    "@astrojs/check": {
-      "typescript": "$typescript"
-    }
-  },
   "devDependencies": {
     "@biomejs/biome": "2.4.14",
     "@types/react": "^19.2.14",
