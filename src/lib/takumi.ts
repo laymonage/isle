@@ -47,8 +47,8 @@ export default function takumiIntegration(
       },
       'astro:server:setup': async ({ server }) => {
         server.middlewares.use(async (req, res, next) => {
+          if (!req.url?.endsWith('/og.webp')) return next();
           const render = async () => {
-            if (!req.url?.endsWith('/og.webp')) return next();
             const path = req.url!.replace(/\/?og.webp\/?$/, '');
             const htmlUrl = new URL(path, `${scheme}://${req.headers.host}`);
             const html = await fetch(htmlUrl).then((res) => res.text());
