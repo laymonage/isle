@@ -10,7 +10,7 @@ import TimelineYear from '../components/TimelineYear.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { prose, proseList } from '../lib/classes';
 
-const timelineData = await getCollection('about');
+const timelineData = (await getCollection('about')).reverse();
 const latestItems = timelineData.slice(0, 7);
 const rest = timelineData.slice(6);
 ---
