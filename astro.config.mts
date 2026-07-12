@@ -1,20 +1,18 @@
+import { satteri, satteriHeadingIdsPlugin } from '@astrojs/markdown-satteri';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
-
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
-
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
 
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
+import satteriAutolinkHeadings from './src/lib/autolink-headings';
 import pagefind from './src/lib/pagefind';
 import { copyButton } from './src/lib/shiki';
 import takumi from './src/lib/takumi';
-import remarkToc from './src/lib/toc';
+import satteriToc from './src/lib/toc';
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,6 +47,25 @@ export default defineConfig({
     takumi(),
   ],
   markdown: {
+    processor: satteri({
+      mdastPlugins: [
+        satteriToc({
+          heading: 'Table of contents',
+          tight: true,
+          maxDepth: 3,
+          className: 'toc',
+        }),
+      ],
+      hastPlugins: [
+        satteriHeadingIdsPlugin(),
+        satteriAutolinkHeadings({
+          content: '#',
+          ignore: /table-of-contents/i,
+          headingClassName: ['anchor'],
+          linkClassName: ['anchor-link'],
+        }),
+      ],
+    }),
     shikiConfig: {
       themes: {
         light: 'github-light',
@@ -57,26 +74,6 @@ export default defineConfig({
       defaultColor: false,
       transformers: [copyButton()],
     },
-    remarkPlugins: [[remarkToc, { maxDepth: 3, className: 'toc' }]],
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'prepend',
-          content: {
-            type: 'text',
-            value: '#',
-          },
-          headingProperties: {
-            className: ['anchor'],
-          },
-          properties: {
-            className: ['anchor-link'],
-          },
-        },
-      ],
-    ],
   },
   vite: {
     resolve: {

@@ -3,7 +3,7 @@ import {
   defineCollection,
   getCollection,
 } from 'astro:content';
-import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import { createSatteriMarkdownProcessor } from '@astrojs/markdown-satteri';
 import { rssSchema } from '@astrojs/rss';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
@@ -163,7 +163,7 @@ const projects = defineCollection({
   schema: projectGroupSchema,
 });
 
-const markdownProcessor = createMarkdownProcessor();
+const markdownProcessor = createSatteriMarkdownProcessor();
 
 export const md = async (content: string) =>
   (await (await markdownProcessor).render(content)).code;

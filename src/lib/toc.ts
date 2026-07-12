@@ -1,7 +1,7 @@
-import type { Root } from 'mdast';
+import type { Node, Root, RootContent } from 'mdast';
 import type { Options } from 'mdast-util-toc';
-
 import { toc } from 'mdast-util-toc';
+import { defineMdastPlugin, type MdastVisitorContext } from 'satteri';
 
 interface TocOptions extends Options {
   className?: string;
@@ -19,14 +19,17 @@ interface TocOptions extends Options {
  * copied under the MIT License Copyright (c) 2015 Titus Wormer
  *
  */
-export default function remarkToc(options: TocOptions) {
-  const settings = {
-    ...options,
-    heading: options?.heading || '(table[ -]of[ -])?contents?|toc',
-    tight: options && typeof options.tight === 'boolean' ? options.tight : true,
-  };
+export default function satteriToc(options: TocOptions = {}) {
+  const { className, ...settings } = options;
 
-  return (tree: Root) => {
+  const heading = (node: Node, ctx: MdastVisitorContext) => {
+    const tree = getRoot(node, ctx);
+    if (!tree) return;
+
+    // Run once per document even though we subscribe to heading nodes.
+    if (ctx.data.__tocDone) return;
+    ctx.data.__tocDone = true;
+
     const result = toc(tree, settings);
 
     if (
@@ -42,13 +45,28 @@ export default function remarkToc(options: TocOptions) {
     // Add toc className
     result.map.data = result.map.data || {};
     result.map.data.hProperties = result.map.data.hProperties || {};
-    result.map.data.hProperties.className = options.className;
+    result.map.data.hProperties.className = className;
 
     // Fix incorrect indices when the heading is inside a <details> element
-    tree.children = [
+    ctx.setProperty(tree, 'children', [
       ...tree.children.slice(0, result.index + 1),
       result.map,
       ...tree.children.slice(result.index + 1),
-    ];
+    ]);
   };
+
+  return defineMdastPlugin({
+    name: 'toc',
+    heading,
+  });
+}
+
+function getRoot(node: Node, ctx: MdastVisitorContext): Root | undefined {
+  let root: Node | undefined = node;
+
+  while (root && root.type !== 'root') {
+    root = ctx.parent(root as RootContent);
+  }
+
+  return root as Root | undefined;
 }
