@@ -67,11 +67,23 @@
     @apply w-6 sm:-ml-6 inline-block;
   }
 
-  [id="table-of-contents"] {
-    @apply text-xl;
+  details:has([id^="table-of-contents"]) {
+    summary {
+      @apply list-none sm:-ml-4;
 
-    .anchor-link {
-      @apply hidden;
+      &::before {
+        @apply mr-0.5;
+
+        content: "⏵";
+      }
+
+      [open] &::before {
+        content: "⏷";
+      }
+    }
+
+    [id^="table-of-contents"] {
+      @apply text-xl;
     }
   }
 
