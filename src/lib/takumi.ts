@@ -2,17 +2,17 @@ import { readFileSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { AstroIntegration } from 'astro';
+import { type RenderOptions, render } from 'takumi-js';
 import { fromJsx } from 'takumi-js/helpers/jsx';
-import { Renderer, type RenderOptions } from 'takumi-js/node';
 import OGImage, { type OGImageProps } from '../components/OGImage';
 
 const font = readFileSync('./public/fonts/SourceSans3-VariableFont_wght.ttf');
 const backgroundImage = readFileSync('./public/bg.svg');
 
-const renderer = new Renderer({
+const defaultOptions = {
   fonts: [{ name: 'Source Sans 3', data: font }],
-  persistentImages: [{ src: 'background', data: backgroundImage }],
-});
+  images: [{ src: 'background', data: backgroundImage }],
+};
 
 interface TakumiIntegrationConfig {
   renderOptions?: RenderOptions;
@@ -30,7 +30,10 @@ async function renderImage(html: string, renderOptions: RenderOptions) {
     .split('</script>')[0];
   const metadata = JSON.parse(metadataText) as OGImageProps;
   const { node } = await fromJsx(OGImage(metadata));
-  return await renderer.render(node, renderOptions);
+  return await render(node, {
+    ...defaultOptions,
+    ...renderOptions,
+  });
 }
 
 export default function takumiIntegration(
