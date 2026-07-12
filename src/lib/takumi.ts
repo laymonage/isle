@@ -6,11 +6,18 @@ import { type RenderOptions, render } from 'takumi-js';
 import { fromJsx } from 'takumi-js/helpers/jsx';
 import OGImage, { type OGImageProps } from '../components/OGImage';
 
-const font = readFileSync('./public/fonts/SourceSans3-VariableFont_wght.ttf');
+const sourceSans3 = readFileSync(
+  './public/fonts/SourceSans3-VariableFont_wght.ttf',
+);
+const notoEmoji = readFileSync('./public/fonts/NotoEmoji-Regular.ttf');
 const backgroundImage = readFileSync('./public/bg.svg');
 
-const defaultOptions = {
-  fonts: [{ name: 'Source Sans 3', data: font }],
+const defaultOptions: RenderOptions = {
+  emoji: 'from-font',
+  fonts: [
+    { name: 'Source Sans 3', data: sourceSans3 },
+    { name: 'Noto Emoji', data: notoEmoji },
+  ],
   images: [{ src: 'background', data: backgroundImage }],
 };
 
@@ -33,7 +40,7 @@ async function renderImage(html: string, renderOptions: RenderOptions) {
   return await render(node, {
     ...defaultOptions,
     ...renderOptions,
-  });
+  } as RenderOptions);
 }
 
 export default function takumiIntegration(
