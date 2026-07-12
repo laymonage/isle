@@ -37,8 +37,8 @@
     "sirv": "^3.0.2",
     "swr": "^2.4.2",
     "tailwindcss": "^4.2.2",
-    "takumi-js": "^2.0.2",
-    "typescript": "^6.0.3"
+    "takumi-js": "^2.1.1",
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.3",
