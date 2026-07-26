@@ -130,11 +130,14 @@ export const trackSchema = z.object({
     url: z.string().nullable(),
   }),
   artists: z.array(
-    z.object({
-      id: z.string().nullable(),
-      name: z.string(),
-      url: z.string().nullable(),
-    }),
+    z
+      .object({
+        id: z.string().nullable(),
+        name: z.string().nullable(),
+        type: z.string().nullable().optional(),
+        url: z.string().nullable(),
+      })
+      .transform((artist) => ({ ...artist, name: artist.name || artist.type })),
   ),
 });
 
@@ -186,12 +189,16 @@ export function simplifyTrack(
   added_at = '1970-01-01',
 ): TrackSimplified {
   const url = t.external_urls.spotify || '';
+  const albumUrl = t.album.external_urls.spotify || '';
   const album = {
     ...t.album,
     image_url:
       t.album.images[0]?.url ||
       'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
-    url: t.album.external_urls.spotify || '',
+    url:
+      (t.album as SpotifyApi.ContextObject).type === 'show'
+        ? albumUrl.replace('/album/', '/show/') || ''
+        : albumUrl || '',
   };
   const artists = t.artists.map((artist) => ({
     ...artist,
