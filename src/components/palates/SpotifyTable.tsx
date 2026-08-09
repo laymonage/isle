@@ -108,7 +108,10 @@ const getMainColumn = (mode: MainColumnMode) =>
             <img
               src={isAlbum ? row.image_url : row.album.image_url}
               alt={row.name}
-              className={clsx({ 'h-16 w-16': isAlbum, 'h-8 w-8': !isAlbum })}
+              className={clsx('object-cover', {
+                'h-16 w-16': isAlbum,
+                'h-8 w-8': !isAlbum,
+              })}
             />
             <div className="min-w-0">
               {row.url ? (
@@ -209,7 +212,7 @@ const columns = {
                 .at(-1)?.url
             }
             alt={row.name}
-            className="h-24 w-24"
+            className="h-24 w-24 object-cover"
           />
           <div className="min-w-0">
             <ExternalLink
