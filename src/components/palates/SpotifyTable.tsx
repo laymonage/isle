@@ -2,14 +2,23 @@ import {
   type CellContext,
   type ColumnDef,
   type ColumnHelper,
+  columnFilteringFeature,
+  columnVisibilityFeature,
   createColumnHelper,
+  createFilteredRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
+  globalFilteringFeature,
   type Row,
+  type RowData,
+  rowSortingFeature,
   type SortingState,
-  useReactTable,
+  sortFn_alphanumeric,
+  sortFn_datetime,
+  sortFn_text,
+  tableFeatures,
+  useTable,
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import clsx from 'clsx';
@@ -39,17 +48,45 @@ function ExternalLink({
   return <a {...props} target={target} rel={rel} />;
 }
 
-function getColumnMeta<T>(columnDef: ColumnDef<T, unknown>) {
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  globalFilteringFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: {
+    alphanumeric: sortFn_alphanumeric,
+    text: sortFn_text,
+    datetime: sortFn_datetime,
+  },
+});
+
+type TableFeatures = typeof features;
+
+function getColumnMeta<T extends RowData>(
+  columnDef: ColumnDef<TableFeatures, T, unknown>,
+) {
   return columnDef.meta as Record<string, string>;
 }
 
-const columnHelper = createColumnHelper<SpotifyTableProps['data'][number]>();
+const columnHelper = createColumnHelper<
+  TableFeatures,
+  SpotifyTableProps['data'][number]
+>();
 const albumOrTrackColumnHelper = columnHelper as ColumnHelper<
+  TableFeatures,
   AlbumSimplified | TrackSimplified
 >;
-const trackColumnHelper = columnHelper as ColumnHelper<TrackSimplified>;
-const artistColumnHelper =
-  columnHelper as ColumnHelper<SpotifyApi.ArtistObjectFull>;
+const trackColumnHelper = columnHelper as ColumnHelper<
+  TableFeatures,
+  TrackSimplified
+>;
+const artistColumnHelper = columnHelper as ColumnHelper<
+  TableFeatures,
+  SpotifyApi.ArtistObjectFull
+>;
 
 const separator = '|SEP|';
 
@@ -131,7 +168,7 @@ const columns = {
     id: 'number',
     cell: ({
       row: { index, original: row },
-    }: CellContext<TrackSimplified, unknown>) => (
+    }: CellContext<TableFeatures, TrackSimplified, unknown>) => (
       <TrackPreview
         number={index + 1}
         label={`Preview ${row.name} by ${row.artists.map(({ name }) => name).join(', ')}`}
@@ -293,6 +330,7 @@ const getColumns = (type: TableType, mode: MainColumnMode) =>
     ],
     artist: [columns.number, columns.artist, columns.popularity],
   })[type] as ColumnDef<
+    TableFeatures,
     AlbumSimplified | TrackSimplified | SpotifyApi.ArtistObjectFull
   >[];
 
@@ -346,9 +384,11 @@ export default function SpotifyTable({
   const [mode, setMode] = useState<MainColumnMode>('title');
   const [globalFilter, setGlobalFilter] = useState('');
 
-  const table = useReactTable<
+  const table = useTable<
+    TableFeatures,
     AlbumSimplified | TrackSimplified | SpotifyApi.ArtistObjectFull
   >({
+    features,
     data,
     columns: getColumns(type, mode),
     state: {
@@ -377,9 +417,6 @@ export default function SpotifyTable({
     },
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: 'includesString',
-    getFilteredRowModel: getFilteredRowModel(),
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
   });
 
   const { rows } = table.getRowModel();
@@ -516,6 +553,7 @@ export default function SpotifyTable({
                 ) : null}
                 {virtualRows.map((virtualRow) => {
                   const row = rows[virtualRow.index] as Row<
+                    TableFeatures,
                     (typeof data)[number]
                   >;
                   return (
