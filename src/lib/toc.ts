@@ -1,4 +1,5 @@
 import type { Node, Root, RootContent } from 'mdast';
+import type {} from 'mdast-util-to-hast';
 import type { Options } from 'mdast-util-toc';
 import { toc } from 'mdast-util-toc';
 import { defineMdastPlugin, type MdastVisitorContext } from 'satteri';
@@ -45,7 +46,7 @@ export default function satteriToc(options: TocOptions = {}) {
     // Add toc className
     result.map.data = result.map.data || {};
     result.map.data.hProperties = result.map.data.hProperties || {};
-    result.map.data.hProperties.className = className;
+    result.map.data.hProperties.className = className ? [className] : undefined;
 
     // Fix incorrect indices when the heading is inside a <details> element
     ctx.setProperty(tree, 'children', [
